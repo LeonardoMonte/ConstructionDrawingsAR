@@ -1,4 +1,4 @@
-﻿/*
+/*
  * PolyExtruder.cs
  *
  * Description: Class to render a custom polygon (2D) or prism (3D; simple extrusion of the polygon along the y-axis),
@@ -31,6 +31,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 
 public class PolyExtruder : MonoBehaviour
 {
@@ -48,6 +49,8 @@ public class PolyExtruder : MonoBehaviour
 
 	// indicator if GameObject is extruded 3D (prism) or 2D (polygon)
 	private bool is3D;
+
+    private string valuetouse;
 
     // reference to extrusion height (Y axis)
     // Note: default y (height) of extruded polygon = 1.0f; default y (height) of bottom polygon = 0.0f;
@@ -67,6 +70,8 @@ public class PolyExtruder : MonoBehaviour
     private MeshRenderer topMeshRenderer;
     private MeshRenderer surroundMeshRenderer;
 
+
+
     #endregion
 
 
@@ -80,7 +85,7 @@ public class PolyExtruder : MonoBehaviour
     /// <param name="vertices">Vector2 Array representing the input data of the polygon.</param>
     /// <param name="color">Color of the prism's material.</param>
     /// <param name="is3D">Set to<c>true</c> if polygon extrusion should be applied (= 3D prism), or <c>false</c> if it is only the (2D) polygon.</param>
-    public void createPrism(string prismName, float height, Vector2[] vertices, Color32 color, bool is3D)
+    public void createPrism(string prismName, float height, Vector2[] vertices, Color32 color, bool is3D,string valuetouse)
     {
         // set data
         this.prismName = name;
@@ -90,6 +95,7 @@ public class PolyExtruder : MonoBehaviour
         this.polygonArea = 0.0f;
         this.polygonCentroid = new Vector2(0.0f, 0.0f);
         this.is3D = is3D;
+        this.valuetouse = valuetouse;
 
         // handle vertex order
         bool vertexOrderClockwise = areVerticesOrderedClockwise(this.originalPolygonVertices);
@@ -393,6 +399,13 @@ public class PolyExtruder : MonoBehaviour
             goB.GetComponent<MeshCollider>().enabled = false;
             goT.GetComponent<MeshCollider>().enabled = true;
             goS.GetComponent<MeshCollider>().enabled = false;
+
+            //AssetDatabase.CreateAsset( this.bottomMesh, "Assets/bottommesh"+this.valuetouse+".obj" );
+            //AssetDatabase.SaveAssets();
+            //AssetDatabase.CreateAsset( this.topMesh, "Assets/toptommesh"+this.valuetouse+".obj" );
+            //AssetDatabase.SaveAssets();
+            //AssetDatabase.CreateAsset( this.surroundMesh, "Assets/surroundmesh"+this.valuetouse+".obj" );
+            //AssetDatabase.SaveAssets();
         }
 
         // set height and color

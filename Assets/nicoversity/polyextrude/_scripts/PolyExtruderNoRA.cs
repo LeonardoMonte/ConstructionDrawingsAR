@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 public class PolyExtruderNoRA : MonoBehaviour
 {
@@ -55,17 +56,39 @@ public class PolyExtruderNoRA : MonoBehaviour
 			        polyExtruderGO5.name = "Polygon5";
 
 
-			        polyExtruder.createPrism(polyExtruderGO.name, extrusionHeight, Polygon1, Color.grey, is3D);
-			        polyExtruder2.createPrism(polyExtruderGO2.name, extrusionHeight, Polygon2, Color.grey, is3D);
-			        polyExtruder3.createPrism(polyExtruderGO3.name, extrusionHeight, Polygon3, Color.grey, is3D);
-			        polyExtruder4.createPrism(polyExtruderGO4.name, extrusionHeight, Polygon4, Color.grey, is3D);
-			        polyExtruder5.createPrism(polyExtruderGO5.name, extrusionHeight, Polygon5, Color.grey, is3D);
+			        polyExtruder.createPrism(polyExtruderGO.name, extrusionHeight, Polygon1, Color.grey, is3D,"1");
+			        polyExtruder2.createPrism(polyExtruderGO2.name, extrusionHeight, Polygon2, Color.grey, is3D,"2");
+			        polyExtruder3.createPrism(polyExtruderGO3.name, extrusionHeight, Polygon3, Color.grey, is3D,"3");
+			        polyExtruder4.createPrism(polyExtruderGO4.name, extrusionHeight, Polygon4, Color.grey, is3D,"4");
+			        polyExtruder5.createPrism(polyExtruderGO5.name, extrusionHeight, Polygon5, Color.grey, is3D,"5");
 
-			        polyExtruderGO.transform.localScale = new Vector3(-1,60,1);
-			        polyExtruderGO2.transform.localScale = new Vector3(-1,60,1);
-			        polyExtruderGO3.transform.localScale = new Vector3(-1,60,1);
-			        polyExtruderGO4.transform.localScale = new Vector3(-1,60,1);
-			        polyExtruderGO5.transform.localScale = new Vector3(-1,60,1);
+
+				    //string localPath = "Assets/" + polyExtruderGO.name + ".prefab";
+
+		            //localPath = AssetDatabase.GenerateUniqueAssetPath(localPath);
+
+		            //PrefabUtility.SaveAsPrefabAssetAndConnect(polyExtruderGO, localPath, InteractionMode.UserAction);
+
+
+
+
+				    //Object prefab2 = EditorUtility.CreateEmptyPrefab("Assets/"+polyExtruderGO2.name+".prefab");
+				    //EditorUtility.ReplacePrefab(polyExtruderGO2, prefab2, ReplacePrefabOptions.ConnectToPrefab);
+
+				    //Object prefab3 = EditorUtility.CreateEmptyPrefab("Assets/"+polyExtruderGO3.name+".prefab"//);
+				    //EditorUtility.ReplacePrefab(polyExtruderGO3, prefab3, ReplacePrefabOptions.ConnectToPrefab)//;
+
+				    //Object prefab4 = EditorUtility.CreateEmptyPrefab("Assets/"+polyExtruderGO4.name+".prefab");
+				    //EditorUtility.ReplacePrefab(polyExtruderGO4, prefab4, ReplacePrefabOptions.ConnectToPrefab);
+
+				    //Object prefab5 = EditorUtility.CreateEmptyPrefab("Assets/"+polyExtruderGO5.name+".prefab");
+				    //EditorUtility.ReplacePrefab(polyExtruderGO5, prefab5, ReplacePrefabOptions.ConnectToPrefab);
+
+			        //polyExtruderGO.transform.localScale = new Vector3(-1,60,1);
+			        //polyExtruderGO2.transform.localScale = new Vector3(-1,60,1);
+			        //polyExtruderGO3.transform.localScale = new Vector3(-1,60,1);
+			        //polyExtruderGO4.transform.localScale = new Vector3(-1,60,1);
+			        //polyExtruderGO5.transform.localScale = new Vector3(-1,60,1);
 
 			        //polyExtruderGO.transform.position = new Vector3(0,0.125f,0);
 			        //polyExtruderGO2.transform.position = new Vector3(0,0.125f,0);
@@ -78,8 +101,6 @@ public class PolyExtruderNoRA : MonoBehaviour
 			        //polyExtruderGO3.transform.Rotate(90,0,0);
 			        //polyExtruderGO4.transform.Rotate(90,0,0);
 			        //polyExtruderGO5.transform.Rotate(90,0,0);
-
-
 
 
 

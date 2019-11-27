@@ -14,7 +14,31 @@ namespace Lean.Common
 		public const string HelpUrlPrefix = "http://carloswilkes.github.io/Documentation/";
 
 		public const string ComponentPathPrefix = "Lean/";
+#if UNITY_EDITOR
+		/// <summary>This method creates an empty GameObject prefab at the current asset folder</summary>
+		public static GameObject CreateAsset(string name)
+		{
+			var gameObject = new GameObject(name);
+			var path       = AssetDatabase.GetAssetPath(Selection.activeObject);
 
+			if (string.IsNullOrEmpty(path) == true)
+			{
+				path = "Assets";
+			}
+
+			path = AssetDatabase.GenerateUniqueAssetPath(path + "/" + name + ".prefab");
+#if UNITY_2018_3_OR_NEWER
+			var prefab = PrefabUtility.SaveAsPrefabAsset(gameObject, path);
+#else
+			var prefab = PrefabUtility.CreatePrefab(path, gameObject);
+#endif
+			Object.DestroyImmediate(gameObject);
+
+			Selection.activeObject = prefab;
+
+			return prefab;
+		}
+#endif
 		/// <summary>This method allows you to create a UI element with the specified component and specified parent, with behaviour consistent with Unity's built-in UI element creation.</summary>
 		public static T CreateElement<T>(Transform parent)
 			where T : Component

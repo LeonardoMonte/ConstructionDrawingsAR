@@ -1,4 +1,4 @@
-﻿/*
+/*
  * PolyExtruder.cs
  *
  * Description: Class to demonstrate the application and functionalities of the PolyExtruder.cs script.
@@ -47,10 +47,6 @@ public class PolyExtruderProject : MonoBehaviour,ITrackableEventHandler
 
     	GetComponent<TrackableBehaviour>().RegisterTrackableEventHandler(this);
 
-
-
-
-
     }
 
     public void OnTrackableStateChanged(TrackableBehaviour.Status previousStatus,TrackableBehaviour.Status newStatus)
@@ -62,7 +58,7 @@ public class PolyExtruderProject : MonoBehaviour,ITrackableEventHandler
     		        // create new GameObject (as a child)
     			if(!created)
     			{
-    				    		        polyExtruderGO = new GameObject();
+    				polyExtruderGO = new GameObject();
 			        polyExtruderGO2 = new GameObject();
 			        polyExtruderGO3 = new GameObject();
 			        polyExtruderGO4 = new GameObject();
@@ -89,11 +85,11 @@ public class PolyExtruderProject : MonoBehaviour,ITrackableEventHandler
 			        polyExtruderGO5.name = "Polygon5";
 
 
-			        polyExtruder.createPrism(polyExtruderGO.name, extrusionHeight, Polygon1, Color.grey, is3D);
-			        polyExtruder2.createPrism(polyExtruderGO2.name, extrusionHeight, Polygon2, Color.grey, is3D);
-			        polyExtruder3.createPrism(polyExtruderGO3.name, extrusionHeight, Polygon3, Color.grey, is3D);
-			        polyExtruder4.createPrism(polyExtruderGO4.name, extrusionHeight, Polygon4, Color.grey, is3D);
-			        polyExtruder5.createPrism(polyExtruderGO5.name, extrusionHeight, Polygon5, Color.grey, is3D);
+			        polyExtruder.createPrism(polyExtruderGO.name, extrusionHeight, Polygon1, Color.grey, is3D,"1");
+			        polyExtruder2.createPrism(polyExtruderGO2.name, extrusionHeight, Polygon2, Color.grey, is3D,"2");
+			        polyExtruder3.createPrism(polyExtruderGO3.name, extrusionHeight, Polygon3, Color.grey, is3D,"3");
+			        polyExtruder4.createPrism(polyExtruderGO4.name, extrusionHeight, Polygon4, Color.grey, is3D,"4");
+			        polyExtruder5.createPrism(polyExtruderGO5.name, extrusionHeight, Polygon5, Color.grey, is3D,"5");
 
 			        //polyExtruderGO.transform.localScale = new Vector3(-0.25f,0.25f,0.25f);
 			        //polyExtruderGO2.transform.localScale = new Vector3(-0.25f,0.25f,0.25f);
